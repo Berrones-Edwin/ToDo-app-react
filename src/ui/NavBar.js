@@ -1,10 +1,11 @@
+import { ButtonGroup } from "@chakra-ui/button";
 import React from "react";
 import { Link } from "react-router-dom";
 
 const NavBar = () => {
     return (
         <nav>
-            <ul>
+            {/* <ul>
                 <li>
                     <Link to="/">All</Link>
                 </li>
@@ -14,7 +15,12 @@ const NavBar = () => {
                 <li>
                     <Link to="/completed">Completed</Link>
                 </li>
-            </ul>
+            </ul> */}
+            <ButtonGroup variant="outline" spacing="6">
+                <Link to="/">All</Link>
+                <Link to="/active">Active</Link>{" "}
+                <Link to="/completed">Completed</Link>
+            </ButtonGroup>
         </nav>
     );
 };

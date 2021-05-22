@@ -1,7 +1,12 @@
+import { Button } from "@chakra-ui/button";
+import { Input } from "@chakra-ui/input";
+import { HStack } from "@chakra-ui/layout";
+import { useToast } from "@chakra-ui/toast";
 import React, { useContext, useState } from "react";
 import TodoContext from "../context/ToDoContextProvider";
 
 const AddToDo = () => {
+    const toast = useToast();
     const { list, setList } = useContext(TodoContext);
     const [nameToDo, setNameToDo] = useState({
         id: "",
@@ -18,10 +23,17 @@ const AddToDo = () => {
     };
     const handleSubmit = (e) => {
         e.preventDefault();
-
         if (nameToDo.name.trim().length === 0) {
-            console.error("the field name is required");
+            toast({
+                title: "Error",
+                description: "The field name is required",
+                status: "error",
+                duration: 3000,
+                isClosable: true,
+            });
         } else {
+            
+            console.log('click');
             setList([...list, nameToDo]);
         }
     };
@@ -29,9 +41,10 @@ const AddToDo = () => {
     return (
         <>
             <form onSubmit={handleSubmit}>
-                <div>
-                    <input
+                <HStack mt="8">
+                    <Input
                         type="text"
+                        variant="filled"
                         placeholder="Add Details"
                         name="name"
                         autoComplete="off"
@@ -39,8 +52,11 @@ const AddToDo = () => {
                         onChange={handleChangeInput}
                         required
                     />
-                </div>
-                <input type="submit" value="ADD" />
+
+                    <Button colorScheme="pink" px="8" type="submit">
+                        Add ToDo
+                    </Button>
+                </HStack>
             </form>
         </>
     );

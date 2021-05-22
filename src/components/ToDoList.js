@@ -1,4 +1,14 @@
 import React from "react";
+import {
+    HStack,
+    VStack,
+    IconButton,
+    StackDivider,
+    Spacer,
+    Badge,
+    Checkbox,
+} from "@chakra-ui/react";
+import { FaTrash } from "react-icons/fa";
 
 const ToDoList = ({ list, setList }) => {
     const handleChecked = (item) => {
@@ -15,29 +25,44 @@ const ToDoList = ({ list, setList }) => {
         setList(newList);
     };
     const handleDelete = (item) => {
-        const newList =  list.filter((i) => item.id !== i.id);
+        const newList = list.filter((i) => item.id !== i.id);
         setList(newList);
     };
+    if (!list.length)
+        return (
+            <Badge colorScheme="green" p="4" m="4" borderRadius="lg">
+                No ToDos
+            </Badge>
+        );
     return (
-        <ul>
+        <VStack
+            divider={<StackDivider />}
+            borderColor="gray.100"
+            borderWidth="2px"
+            p="4"
+            borderRadius="lg"
+            w="100%"
+            maxW={{ base: "90vw", sm: "80vw", lg: "50vw", xl: "40vw" }}
+            alignItems="stretch"
+        >
             {list.map((item) => (
-                <li key={item.id}>
-                    <label>
-                        <input
-                            type="checkbox"
-                            id={item.id}
-                            value={item.name}
-                            defaultChecked={item.completed}
-                            onChange={(e) => handleChecked(item)}
-                        />
+                <HStack key={item.id}>
+                    <Checkbox
+                        colorScheme="pink"
+                        isChecked={item.completed}
+                        onChange={() => handleChecked(item)}
+                    >
                         {item.name}
-                        <button onClick={() => handleDelete(item)}>
-                            Delete
-                        </button>
-                    </label>
-                </li>
+                    </Checkbox>
+                    <Spacer />
+                    <IconButton
+                        isRound="true"
+                        onClick={() => handleDelete(item)}
+                        icon={<FaTrash />}
+                    />
+                </HStack>
             ))}
-        </ul>
+        </VStack>
     );
 };
 

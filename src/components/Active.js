@@ -8,7 +8,7 @@ const Active = () => {
     const listFiltered = list.filter((item) => item.completed !== true);
     return (
         <>
-            <h3>Active</h3> 
+           
             <ToDoList list={listFiltered} setList={setList} />
         </>
     );
