@@ -11,9 +11,9 @@ ToDoAPP es la clasica app de tareas por hacer.
 
 ## Demo
 
-If you want to see the demo of this proyect deployed, you can visit [Demo of the proyect](https://berrones-edwin.github.io/ToDo-app-react)
+If you want to see the demo of this proyect deployed, you can visit [Demo of the proyect](https://todo-app-delta-two.vercel.app)
 
-Si tu quieres puedes ver el demo del proyecto ya desplegado, visitame [Demo of the proyect](https://berrones-edwin.github.io/ToDo-app-react)
+Si tu quieres puedes ver el demo del proyecto ya desplegado, visitame [Demo of the proyect](https://todo-app-delta-two.vercel.app)
 
 ## Installation | Instalación
 
