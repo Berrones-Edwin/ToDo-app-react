@@ -32,8 +32,6 @@ const AddToDo = () => {
                 isClosable: true,
             });
         } else {
-            
-            console.log('click');
             setList([...list, nameToDo]);
         }
     };

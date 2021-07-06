@@ -5,7 +5,6 @@ import {
     IconButton,
     StackDivider,
     Spacer,
-    Badge,
     Checkbox,
 } from "@chakra-ui/react";
 import { FaTrash } from "react-icons/fa";
@@ -18,7 +17,7 @@ const ToDoList = ({ list, setList }) => {
     const itemChecked = (item) => {
         const newList = list.map((i) => {
             if (item.id === i.id) {
-                item.completed = true;
+                item.completed = !item.completed;
                 return item;
             } else return i;
         });
@@ -28,12 +27,7 @@ const ToDoList = ({ list, setList }) => {
         const newList = list.filter((i) => item.id !== i.id);
         setList(newList);
     };
-    if (!list.length)
-        return (
-            <Badge colorScheme="green" p="4" m="4" borderRadius="lg">
-                No ToDos
-            </Badge>
-        );
+
     return (
         <VStack
             divider={<StackDivider />}
